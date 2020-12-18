@@ -1,0 +1,41 @@
+URxvt.font: xft:monospace:size=9
+URxvt.scrollBar: false
+
+URxvt*xftAntialias: true
+
+! special
+*.foreground:   #556fff
+*.background:   #282828
+*.cursorColor:  #556fff
+
+! black
+*.color0:       #282a36
+*.color8:       #414458
+
+! red
+*.color1:       #7e006f
+*.color9:       #ff4971
+
+! green
+*.color2:       #19bbe9
+*.color10:      #a81c4c
+
+! yellow
+*.color3:       #19596c
+*.color11:      #ff8037
+
+! blue
+*.color4:       #414458
+*.color12:      #556fff
+
+! magenta
+*.color5:       #ff4971
+*.color13:      #9220b4
+
+! cyan
+*.color6:       #79e6f3
+*.color14:      #3fdcee
+
+! white
+*.color7:       #414458
+*.color15:      #597dff
