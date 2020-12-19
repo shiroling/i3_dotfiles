@@ -354,10 +354,10 @@ font pango:Noto Mono Regular 8
 exec --no-startup-id Thunderbird
 
 # bluetooth
-exec --no-startup-id blueberry-tray
+exec_always --no-startup-id blueberry-tray
 
 # network
-exec --no-startup-id nm-applet
+exec_always --no-startup-id nm-applet
 
 #comunication
 # exec --no-startup-id discord
@@ -464,21 +464,6 @@ for_window [class="gnome-terminal"] focus
 for_window [class="URxvt"] focus
 for_window [class="Sublime_text"] focus
 for_window [class="Firefox"] focus
-
-#####################################################################################################################
-#################                          audio settings                                           #################
-#####################################################################################################################
-#https://github.com/acrisci/playerctl/
-
-
-# bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
-# bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%-
-# bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
-# bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-# bindsym XF86AudioNext exec --no-startup-id playerctl next
-# bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-# zbindsym XF86AudioStop exec --no-startup-id playerctl stop
-
 
 #####################################################################################################################
 #################                          brightness control                                       #################
@@ -631,6 +616,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 
 bar {
+	tray_output primary
+	tray_padding 0
     i3bar_command i3bar --transparency
 	height 20
 	workspace_buttons yes
@@ -644,7 +631,7 @@ bar {
 		focused_workspace  $bg-color          $bg-color          $text-color
 		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-        active_workspace   $inactive-bg-color $inactive-bg-color 		 $text-color
+        active_workspace   $inactive-bg-color $inactive-bg-color $text-color
     }
 status_command /home/shiroling/.config/i3/resources/status/start-conkyStatus.sh
 }
@@ -726,12 +713,20 @@ mode "$mode_App" {
 
 
 #####################################################################################################################
-#################                          volume control                                           #################
+#################                          screenshot                                               #################
 #####################################################################################################################
+
+bindsym $mod+shift+c exec /home/shiroling/.config/i3/resources/screenshot/screenshot.sh# Review the lines below and append to ~/.config/i3/config
+
+
+#####################################################################################################################
+#################                          volume	                                                #################
+#####################################################################################################################
+
 ## Volume control
 
 # Path to volume control, without trailing slash
-set $volumepath ~/i3-volume
+set $volumepath ~/.config/i3/i3-volume
 
 # Command for the status line
 #   ie: i3blocks, i3status
@@ -755,12 +750,6 @@ set $volumestep 5
 # Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
 bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
 bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
-bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+bindsym XF86AudioMute  exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+# Review the lines below and append to ~/.config/i3/config
 
-
-
-#####################################################################################################################
-#################                          screenshot                                               #################
-#####################################################################################################################
-
-bindsym $mod+shift+c exec /home/shiroling/.config/i3/resources/screenshot/screenshot.sh

@@ -1,0 +1,3 @@
+[submodule "i3-volume"]
+	path = i3-volume
+	url = https://github.con/hastinbe/i3-volume
